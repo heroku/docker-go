@@ -7,7 +7,7 @@ app.json requirements ATM:
 ```json
 {
   ...
-  "image": "heroku/go:latest",
+  "image": "heroku/go:1.4.2",
   "mount_dir": "src/<go package name; eg github.com/heroku-examples/go-websocket-chat-demo>",
   ...
 }
