@@ -1,6 +1,6 @@
 # Go Docker image
 
-For use with the [heroku-docker](https://github.com/heroku/heroku-docker) cli plugin.
+For use with the [heroku-docker](https://github.com/heroku/heroku-docker) cli plugin's compose branch.
 
 app.json requirements ATM:
 
