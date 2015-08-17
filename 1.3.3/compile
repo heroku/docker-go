@@ -32,4 +32,7 @@ mkdir -p $(dirname $TGT)
 mv $TMP $TGT
 
 cd $TGT
-godep go install -v ./...
+FLAGS=(-tags heroku)
+
+echo "godep go install ${FLAGS[@]} ./..."
+godep go install "${FLAGS[@]}" ./...
