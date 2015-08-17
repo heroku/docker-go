@@ -1,7 +1,16 @@
-# Heroku Go Docker image
+# [Heroku Go Docker image](https://hub.docker.com/r/heroku/go)
 
 For use with the [heroku docker
 plugin](https://github.com/heroku/heroku-docker).
+
+## Image tags
+
+You can see all of the tags [here](https://hub.docker.com/r/heroku/go/tags/).
+
+The `latest` tag will generally refer to the latest, possibly unsupported,
+release of [Go](https://golang.org/dl), including betas and release candidates.
+
+Once a final version is cut a separate tag will be used and updated.
 
 ## App.json
 
