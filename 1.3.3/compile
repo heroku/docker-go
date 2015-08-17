@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 warn() {
   echo "!!! ---> $*"
 }
@@ -17,8 +19,11 @@ goVerWanted=$(< $GODEPS jq -r .GoVersion)
 goVerHave=$(go version | cut -d \  -f 3)
 
 if [ "$goVerWanted" != "$goVerHave" ]; then
-  warn "Godeps/Godeps.json specifies $goVerWanted"
-  warn "Docker image supports $goVerHave"
+  warn "Godeps/Godeps.json specifies: $goVerWanted"
+  warn "       Docker image supports: $goVerHave"
+  warn ""
+  warn "Update Godeps/Godeps.json or choose a different version tag"
+  warn ""
   exit 1
 fi
 
