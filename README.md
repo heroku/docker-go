@@ -22,11 +22,10 @@ Then run `heroku docker:init` in your application's directory. This will create
 both  `Dockerfile` and `docker-compose.yml` files.
 
 **Note on `mount_dir`**:  The go tooling requires that files be located inside
-of `$GOPATH`. The heroku docker plugin and related docker images sets up a
-`$GOPATH` for you, but requires a little help from the developer to determine
-where to place your application. The correct value of mount_dir can be
-determined with the following command (requires
-  [jq](https://stedolan.github.io/jq/)):
+of `$GOPATH`. The heroku docker plugin and this docker image sets up a `$GOPATH`
+ for you, but requires a little help from the developer to determine where to
+ place your application. The correct value of mount_dir can be determined with
+ the following command (requires [jq](https://stedolan.github.io/jq/)):
 
 ```term
 $ jq -r '"src/" +.ImportPath' < ./Godeps/Godeps.json
