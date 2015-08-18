@@ -13,8 +13,7 @@ Once a final version is cut a separate tag will be used and updated.
 
 ## App.json
 
-**Note: Please read the official documentation
-[here](https://devcenter.heroku.com/articles/docker)**.
+**Note: Please read the official documentation [here](https://devcenter.heroku.com/articles/docker)**.
 
 To use this image with the heroku docker plugin add the following fields to your
 application's `app.json` file:
