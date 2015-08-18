@@ -1,7 +1,6 @@
 # [Heroku Go Docker image](https://hub.docker.com/r/heroku/go)
 
-For use with the [heroku docker
-plugin](https://github.com/heroku/heroku-docker).
+For use with the [heroku docker plugin](https://github.com/heroku/heroku-docker).
 
 ## Image tags
 
@@ -42,8 +41,7 @@ $ jq -r '"src/" +.ImportPath' < ./Godeps/Godeps.json
 
 ### Example app.json
 
-Source can be found
-[here](https://github.com/heroku-examples/go-websocket-chat-demo/blob/master/app.json).
+Source can be found [here](https://github.com/heroku-examples/go-websocket-chat-demo/blob/master/app.json).
 
 ```json
 {
@@ -64,3 +62,9 @@ Source can be found
   ]
 }
 ```
+
+## Slug Size
+
+The images are large but the slugs created by `heroku docker:release` only
+include your application's code, dependencies & compiled binaries so should be
+relatively small.
