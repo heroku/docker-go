@@ -1,0 +1,38 @@
+#!/bin/bash
+
+set -e
+
+warn() {
+  echo "!!! ---> $*"
+}
+
+export TMP=/app/.temp
+export GODEPS=$TMP/Godeps/Godeps.json
+
+if ! < $GODEPS jq -r . > /dev/null; then
+  warn "$GODEPS invalid!!"
+  exit 1
+fi
+
+name=$(< $GODEPS jq -r .ImportPath)
+goVerWanted=$(< $GODEPS jq -r .GoVersion)
+goVerHave=$(go version | cut -d \  -f 3)
+
+if [ "$goVerWanted" != "$goVerHave" ]; then
+  warn "Godeps/Godeps.json specifies: $goVerWanted"
+  warn "       Docker image supports: $goVerHave"
+  warn ""
+  warn "Update Godeps/Godeps.json or choose a different version tag"
+  warn ""
+  exit 1
+fi
+
+TGT="/app/user/src/$name"
+mkdir -p $(dirname $TGT)
+mv $TMP $TGT
+
+cd $TGT
+FLAGS=(-tags heroku)
+
+echo "godep go install ${FLAGS[@]} ./..."
+godep go install "${FLAGS[@]}" ./...
