@@ -25,7 +25,5 @@ ENV PATH $GOPATH/bin:$PATH
 
 COPY ./compile /app/.cache/gotools/bin/compile
 
-COPY ./go-docker.sh /app/.profile.d/go-docker.sh
-
 ONBUILD COPY . /app/.temp
 ONBUILD RUN /app/.cache/gotools/bin/compile

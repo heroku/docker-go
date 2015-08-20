@@ -27,7 +27,7 @@ if [ "$goVerWanted" != "$goVerHave" ]; then
   exit 1
 fi
 
-TGT="/app/user/src/$name"
+export TGT="$GOPATH/src/$name"
 mkdir -p $(dirname $TGT)
 mv $TMP $TGT
 
@@ -36,3 +36,15 @@ FLAGS=(-tags heroku)
 
 echo "godep go install ${FLAGS[@]} ./..."
 godep go install "${FLAGS[@]}" ./...
+
+## End of the compile step, update profile.d if successful
+
+PROFILE=/app/.profile.d/go-docker.sh
+echo "PATH=$GOPATH/bin:\$PATH" > $PROFILE
+echo "echo" >> $PROFILE
+echo 'echo The Go Docker image places your code inside of a \$GOPATH' >> $PROFILE
+echo 'echo At compilation time \$GOPATH was:' $GOPATH >> $PROFILE
+echo "echo Your application\'s code is located in: $TGT" >> $PROFILE
+echo "echo Changing to that directory now." >> $PROFILE
+echo "echo" >> $PROFILE
+echo "cd $TGT" >> $PROFILE
