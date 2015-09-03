@@ -12,7 +12,7 @@ echo "${versions[@]}"
 for version in "${versions[@]}"; do
    (
 		 set -x
-		 < Dockerfile sed -E 's/^(ENV GOVERSION) .*/\1 '"$version"'/' > $version/Dockerfile
+		 < Dockerfile sed -E 's|^(FROM heroku/go-base:).*|\1'"$version"'|' > $version/Dockerfile
 		 cp compile $version/
   )
 done
