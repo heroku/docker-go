@@ -1,4 +1,4 @@
-FROM heroku/go-base:1.5.1
+FROM heroku/go-base:1.4
 
 RUN mkdir -p /app/.cache/gotools /app/.profile.d
 

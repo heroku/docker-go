@@ -51,7 +51,7 @@ Source can be found [here](https://github.com/heroku-examples/go-websocket-chat-
     "redis",
     "go"
   ],
-  "image": "heroku/go:1.4.2",
+  "image": "heroku/go:1.5",
   "mount_dir": "src/github.com/heroku-examples/go-websocket-chat-demo",
   "website": "http://github.com/heroku-examples/go-websocket-chat-demo",
   "repository": "http://github.com/heroku-examples/go-websocket-chat-demol",
