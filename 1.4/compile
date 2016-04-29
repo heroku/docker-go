@@ -18,7 +18,8 @@ name=$(< $GODEPS jq -r .ImportPath)
 goVerWanted=$(< $GODEPS jq -r .GoVersion)
 goVerHave=$(go version | cut -d \  -f 3)
 
-if [ "$goVerWanted" != "$goVerHave" ]; then
+if [[ "$goVerHave" != *"$goVerWanted"* ]]; then
+  warn ""
   warn "Godeps/Godeps.json specifies: $goVerWanted"
   warn "       Docker image supports: $goVerHave"
   warn ""
